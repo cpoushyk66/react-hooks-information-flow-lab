@@ -7,17 +7,18 @@ function ShoppingList({ items }) {
 
   function handleCategoryChange(event) {
     setSelectedCategory(event.target.value);
+    console.log(event.target.value)
   }
 
   const itemsToDisplay = items.filter((item) => {
     if (selectedCategory === "All") return true;
 
-    return item.category === selectedCategory;
+    return (item.category === selectedCategory)
   });
 
   return (
     <div className="ShoppingList">
-      <Filter onChangeCategory={handleCategoryChange}/>
+      <Filter onCategoryChange={handleCategoryChange}/>
       <ul className="Items">
         {itemsToDisplay.map((item) => (
           <Item key={item.id} name={item.name} category={item.category} />
